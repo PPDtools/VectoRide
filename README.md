@@ -1,6 +1,11 @@
 # VectoRide — Smarter Routes. Better Rides.
 
-**Version:** 0.1 web/PWA prototype. **Test area:** Kearney, Nebraska.
+**Version:** 0.1.1 web/PWA prototype. **Test area:** Kearney, Nebraska.
+
+## v0.1.1 map rendering patch
+- Recalculate map dimensions after layout/rotation changes and disable tile zoom animations.
+- Explicit tile image sizing and clearer tile loading errors.
+- Service-worker cache version bumped for updates.
 
 ## What works
 - Mobile responsive map and start location selection (tap / drag marker)
@@ -23,3 +28,7 @@ For mobile, deploy the files together to an HTTPS static host (e.g., GitHub Page
 
 ## Next build milestone
 Integrate a production-grade routing backend, enforce high-traffic avoidance, query forecasts along the route, calculate wind-adjusted speed / work, and evaluate departure windows.
+
+
+## 0.1.2 tile layout patch
+Includes locally defined essential Leaflet map layout CSS so tile placement survives failure of the external CDN stylesheet. Refresh on both phone and computer after GitHub Pages deploys. This is a targeted test, not yet independently confirmed on users’ devices.

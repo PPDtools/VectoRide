@@ -1,7 +1,34 @@
 'use strict';
 const $=id=>document.getElementById(id), K={lat:40.6995,lng:-99.0817};let start={...K},layers=[],routes=[],active=0;
-const map=L.map('map').setView([K.lat,K.lng],12);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+const map=L.map('map',{zoomAnimation:false,fadeAnimation:false,markerZoomAnimation:false}).setView([K.lat,K.lng],12);
+const tiles=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19, attribution:'&copy; OpenStreetMap contributors',
+  updateWhenIdle:true, keepBuffer:3, detectRetina:false
+}).addTo(map);
+// Responsive panels, browser zoom and rotation can change Leaflet's measured dimensions.
+// Re-measuring avoids displaced/blank square tiles after these changes.
+let mapResizePending=false;
+function refreshMap(){
+  if(mapResizePending)return;
+  mapResizePending=true;
+  requestAnimationFrame(()=>{
+    mapResizePending=false;
+    map.invalidateSize({pan:false,animate:false});
+  });
+}
+window.addEventListener('resize',refreshMap,{passive:true});
+window.addEventListener('orientationchange',()=>setTimeout(refreshMap,200));
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshMap()});
+if('ResizeObserver' in window)new ResizeObserver(refreshMap).observe($('map'));
+setTimeout(refreshMap,250);
+let failedTileCount=0;
+tiles.on('tileerror',()=>{
+  failedTileCount++;
+  if(failedTileCount===4){
+    $('status').textContent='Some map tiles failed to load. Check your internet connection, then refresh the page; the public tile server may be busy.';
+  }
+});
+
 let marker=L.marker([start.lat,start.lng],{draggable:true}).addTo(map).bindPopup('Ride start / finish');
 function setStart(lat,lng){start={lat,lng};marker.setLatLng([lat,lng]);clearRoutes();$('status').textContent='Start updated. Generate routes to compare options.';}
 map.on('click',e=>setStart(e.latlng.lat,e.latlng.lng));marker.on('dragend',()=>{const p=marker.getLatLng();setStart(p.lat,p.lng)});

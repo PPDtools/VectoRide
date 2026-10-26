@@ -1,1 +1,35 @@
 :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#e9eef5;background:#10151c;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 22px;background:#1a222d;border-bottom:1px solid #33404f}.brand{display:flex;align-items:center;gap:12px}.mark{height:44px;width:44px;display:grid;place-items:center;border-radius:12px;background:#ed792e;font-weight:900;font-style:italic;font-size:27px;color:#fff}.brand h1{margin:0;font-size:24px;letter-spacing:-1.1px}.brand h1 span{color:#ff8737}.brand small{color:#b7c2d0;font-size:11px;letter-spacing:.25px}.tag{font-size:10px;letter-spacing:1.1px;color:#f9be92;border:1px solid #754923;border-radius:20px;padding:7px 10px}main{max-width:1440px;margin:auto;display:grid;grid-template-columns:350px minmax(0,1fr);gap:18px;padding:18px}.controls,.map-panel{border:1px solid #354152;border-radius:18px;background:#1b2430;overflow:hidden}.controls{padding:20px}.controls h2{margin:0 0 5px;font-size:22px}.hint{font-size:13px;color:#b6c2d0;margin:0 0 20px}.field{margin:19px 0}.field label{display:flex;justify-content:space-between;gap:9px;font-size:13px;font-weight:650;margin-bottom:9px}.field b{color:#ffa367}.field input[type=range]{width:100%;accent-color:#ff8a3a}.field select,.field input[type=datetime-local]{width:100%;background:#111922;color:#fff;border:1px solid #526074;border-radius:9px;padding:11px;min-height:43px;color-scheme:dark}.switchrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 0;border-top:1px solid #394858}.switchrow strong{display:block;font-size:13px}.switchrow small{display:block;font-size:11px;color:#b7c3ce;margin-top:4px}.switchrow input{width:22px;height:22px;accent-color:#e77831;flex-shrink:0}.note{background:#302920;border-left:3px solid #eda04b;color:#f3d7b0;padding:10px 12px;border-radius:6px;font-size:12px;line-height:1.5;margin:10px 0 17px}.primary,.secondary,.outline{border-radius:10px;padding:12px 15px;font-weight:750}.primary{display:block;width:100%;background:#f18234;color:#171b21;border:none}.primary:disabled{opacity:.6;cursor:wait}.secondary{display:block;width:100%;margin-top:9px;background:#283a50;color:#eff7ff;border:1px solid #54708c}.status{margin-top:14px;color:#c3d2e0;font-size:12px;line-height:1.5;min-height:20px}.weather{margin-top:12px;font-size:12px;line-height:1.65;border:1px solid #405c74;padding:12px;border-radius:10px;background:#1b3143}.maptop{padding:15px 17px;display:flex;align-items:center;justify-content:space-between;gap:10px}.maptop strong{display:block}.maptop small{display:block;color:#aabbca;font-size:11px;margin-top:3px}.outline{background:transparent;color:#e8f3fc;border:1px solid #59677a;font-size:12px;padding:9px}#map{height:520px;width:100%;background:#26323a}.credits{padding:9px 15px;font-size:10px;color:#9bacc0;border-bottom:1px solid #394858}.options{padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.placeholder{grid-column:1/-1;text-align:center;color:#b4c2d1;padding:20px;font-size:13px}.option{background:#263443;border:1px solid #45586a;border-radius:12px;padding:14px}.option.selected{border-color:#f58e42}.option h3{margin:0 0 8px;font-size:15px}.option p{font-size:12px;margin:6px 0;color:#c5d1dc}.option button{width:100%;margin-top:9px;background:#f18b3f;border:0;border-radius:7px;padding:9px;color:#141a21;font-weight:700}.pill{font-size:10px;color:#ffcd98;letter-spacing:.5px}.error{color:#ffb5a8}footer{padding:10px 20px 24px;text-align:center;color:#8e9eaf;font-size:11px}@media(max-width:800px){main{display:flex;flex-direction:column;padding:10px;gap:10px}.controls{padding:16px}.top{padding:12px}.brand h1{font-size:21px}.tag{font-size:8px}#map{height:400px}.options{grid-template-columns:1fr}.field{margin:15px 0}}
+
+
+/* Leaflet core layout fallback. Kept locally so a blocked external
+   Leaflet stylesheet cannot scatter map images into a mosaic. */
+#map.leaflet-container{position:relative;overflow:hidden;outline:0;touch-action:pan-x pan-y;background:#26323a}
+#map .leaflet-pane,#map .leaflet-tile,#map .leaflet-marker-icon,#map .leaflet-marker-shadow,#map .leaflet-tile-container,#map .leaflet-pane>svg,#map .leaflet-pane>canvas,#map .leaflet-zoom-box,#map .leaflet-image-layer{position:absolute;left:0;top:0}
+#map .leaflet-map-pane,#map .leaflet-tile-pane,#map .leaflet-overlay-pane,#map .leaflet-shadow-pane,#map .leaflet-marker-pane,#map .leaflet-tooltip-pane,#map .leaflet-popup-pane{position:absolute;left:0;top:0}
+#map .leaflet-map-pane{z-index:400}
+#map .leaflet-tile-pane{z-index:200}
+#map .leaflet-overlay-pane{z-index:400}
+#map .leaflet-shadow-pane{z-index:500}
+#map .leaflet-marker-pane{z-index:600}
+#map .leaflet-tooltip-pane{z-index:650}
+#map .leaflet-popup-pane{z-index:700}
+#map .leaflet-tile{display:block;max-width:none!important;max-height:none!important;user-select:none;-webkit-user-select:none;pointer-events:none}
+#map .leaflet-tile-loaded{visibility:inherit}
+#map .leaflet-tile-container{pointer-events:none}
+#map .leaflet-interactive{cursor:pointer}
+#map .leaflet-grab{cursor:grab}
+#map .leaflet-dragging .leaflet-grab{cursor:grabbing}
+#map .leaflet-zoom-animated{transform-origin:0 0}
+#map .leaflet-control-container{position:relative;z-index:800}
+#map .leaflet-control{position:relative;z-index:800;pointer-events:auto;clear:both}
+#map .leaflet-top{position:absolute;z-index:1000;pointer-events:none;top:0}
+#map .leaflet-bottom{position:absolute;z-index:1000;pointer-events:none;bottom:0}
+#map .leaflet-left{left:0}
+#map .leaflet-right{right:0}
+#map .leaflet-left .leaflet-control{float:left;margin-left:10px}
+#map .leaflet-right .leaflet-control{float:right;margin-right:10px}
+#map .leaflet-top .leaflet-control{margin-top:10px}
+#map .leaflet-bottom .leaflet-control{margin-bottom:10px}
+#map .leaflet-control-zoom a{display:block;width:30px;height:30px;line-height:30px;text-align:center;color:#222;background:#fff;text-decoration:none;font-weight:bold}
+#map .leaflet-control-attribution{background:#ffffffd9;color:#333;font-size:10px;padding:2px 5px}
+#map .leaflet-control-attribution a{color:#165a9f}
